@@ -2,22 +2,27 @@ package br.tests;
 
 import static org.junit.Assert.*;
 
+import org.junit.Before;
 import org.junit.Test;
 
 import br.codigo.Pilha;
 
 public class testPilha {
+	Pilha pilha;
+	
+	@Before
+	public void inicializaPilha() {
+		pilha = new Pilha();
+	}
 	
 	@Test
 	public void testaPush() {
-		Pilha pilha = new Pilha();
 		pilha.push(7);
 		assertEquals(1, pilha.size());
 	}
 	
 	@Test
 	public void testaPop() {
-		Pilha pilha = new Pilha();
 		pilha.push(7);
 		pilha.push(8);
 		pilha.push(9);
@@ -28,8 +33,7 @@ public class testPilha {
 	} 
 
 	@Test
-	public void testaTop() {
-		Pilha pilha = new Pilha();		
+	public void testaTop() {		
 		pilha.push(100);
 		assertEquals(100, pilha.top());
 		
@@ -42,7 +46,6 @@ public class testPilha {
  
 	@Test
 	public void testaSize() {
-		Pilha pilha = new Pilha();
 		assertEquals(0, pilha.size());
 		
 		pilha.push(88);
@@ -54,7 +57,6 @@ public class testPilha {
 
 	@Test
 	public void testaIsEmpty() {
-		Pilha pilha = new Pilha();
 		assertEquals(true, pilha.isEmpty());
 		
 		pilha.push(51);
@@ -66,7 +68,6 @@ public class testPilha {
 
 	@Test
 	public void testaClear() {
-		Pilha pilha = new Pilha();
 		pilha.push(10);
 		int tamanhoAntes = pilha.size();
 		
