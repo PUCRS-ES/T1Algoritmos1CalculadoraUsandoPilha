@@ -1,28 +1,51 @@
 package br.codigo;
 
-public class Pilha {
+import java.util.ArrayList;
 
-	public void push(int i) {
-		
+public class Pilha {
+	private ArrayList<Node> pilha;
+	private Node head;
+	private int count = 0;
+	private static final int TAMANHO_MAXIMO_PILHA = 8;
+	
+	public Pilha() {
+		pilha = new ArrayList<Node>();
+	}
+	
+	public void push(int valor) {
+		Node novoElemento = new Node(valor);
+		if(count > 0)
+			novoElemento.setNext(head);
+		pilha.add(novoElemento);
+		head = novoElemento;
+		count++;
 	}
 
 	public int size() {
-		return -1;
+		return count;
 	}
 
 	public int pop() {
-		return -2;
+		int valor = head.getElement();
+		head = head.getNext();
+		count--;
+		return valor;
 	}
 
-	public Object top() {
-		return 7;
+	public int top() {
+		return head.getElement();
 	}
 
 	public boolean isEmpty() {
-		return false;
+		if (count == 0)
+			return true;
+		else
+			return false;
 	}
 
 	public void clear() {
-		
+		pilha.clear();
+		count = 0;
+		head = null;
 	}
 }

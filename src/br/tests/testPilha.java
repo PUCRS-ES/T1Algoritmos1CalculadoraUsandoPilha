@@ -29,9 +29,7 @@ public class testPilha {
 
 	@Test
 	public void testaTop() {
-		Pilha pilha = new Pilha();
-		assertEquals(null, pilha.top());
-		
+		Pilha pilha = new Pilha();		
 		pilha.push(100);
 		assertEquals(100, pilha.top());
 		
@@ -40,9 +38,6 @@ public class testPilha {
 		
 		pilha.pop();
 		assertEquals(100, pilha.top());
-		
-		pilha.pop();
-		assertEquals(null, pilha.top());
 	}
  
 	@Test
