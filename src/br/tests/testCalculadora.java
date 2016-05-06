@@ -40,4 +40,26 @@ public class testCalculadora {
 	public void testaPotencia() {
 		assertEquals(19683, calc.potencia(), 0.000001);
 	}
+	
+	@Test
+	public void testaCalcula() {
+		try {
+			calc.setOperando('+');
+			assertEquals(12, calc.calcula(), 0.000001);
+		
+			calc.setOperando('-');
+			assertEquals(-6, calc.calcula(), 0.000001);
+			
+			calc.setOperando('*');
+			assertEquals(27, calc.calcula(), 0.000001);
+			
+			calc.setOperando('/');
+			assertEquals(1.0 / 3, calc.calcula(), 0.000001);
+			
+			calc.setOperando('^');
+			assertEquals(19683, calc.potencia(), 0.000001);			
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+	}
 }

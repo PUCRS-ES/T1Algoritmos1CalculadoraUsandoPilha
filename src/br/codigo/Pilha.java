@@ -29,6 +29,7 @@ public class Pilha {
 		String valor = head.getElement();
 		head = head.getNext();
 		count--;
+		pilha.remove(pilha.size() - 1);
 		return valor;
 	}
 
