@@ -8,13 +8,13 @@ public class Programa {
 	public static void main(String[] args) {
 		Leitor leitor = null;
 		try {
-			String linhaAtual;
 			leitor = new Leitor("expressoes.txt");
-			do {
-				linhaAtual = leitor.leProximaLinha();
+			String linhaAtual = leitor.leProximaLinha();
+			while(linhaAtual != null) {
 				System.out.println(linhaAtual);
+				linhaAtual = leitor.leProximaLinha();
 			}
-			while(linhaAtual != null);
+			
 		} catch (FileNotFoundException e) {
 			System.out.println("Arquivo não encontrado.");
 		} catch (IOException e) {
