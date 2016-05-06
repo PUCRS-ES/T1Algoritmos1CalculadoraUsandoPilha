@@ -17,38 +17,38 @@ public class testPilha {
 	
 	@Test
 	public void testaPush() {
-		pilha.push(7);
+		pilha.push("7");
 		assertEquals(1, pilha.size());
 	}
 	
 	@Test
 	public void testaPop() {
-		pilha.push(7);
-		pilha.push(8);
-		pilha.push(9);
+		pilha.push("7");
+		pilha.push("8");
+		pilha.push("9");
 		
-		assertEquals(9, pilha.pop());
-		assertEquals(8, pilha.pop());
-		assertEquals(7, pilha.pop());
+		assertEquals("9", pilha.pop());
+		assertEquals("8", pilha.pop());
+		assertEquals("7", pilha.pop());
 	} 
 
 	@Test
 	public void testaTop() {		
-		pilha.push(100);
-		assertEquals(100, pilha.top());
+		pilha.push("100");
+		assertEquals("100", pilha.top());
 		
-		pilha.push(200);
-		assertEquals(200, pilha.top());
+		pilha.push("200");
+		assertEquals("200", pilha.top());
 		
 		pilha.pop();
-		assertEquals(100, pilha.top());
+		assertEquals("100", pilha.top());
 	}
  
 	@Test
 	public void testaSize() {
 		assertEquals(0, pilha.size());
 		
-		pilha.push(88);
+		pilha.push("88");
 		assertEquals(1, pilha.size());
 		
 		pilha.pop();
@@ -59,7 +59,7 @@ public class testPilha {
 	public void testaIsEmpty() {
 		assertEquals(true, pilha.isEmpty());
 		
-		pilha.push(51);
+		pilha.push("51");
 		assertEquals(false, pilha.isEmpty());
 		
 		pilha.pop();
@@ -68,7 +68,7 @@ public class testPilha {
 
 	@Test
 	public void testaClear() {
-		pilha.push(10);
+		pilha.push("10");
 		int tamanhoAntes = pilha.size();
 		
 		pilha.clear();

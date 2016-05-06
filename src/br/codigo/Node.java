@@ -1,18 +1,18 @@
 package br.codigo;
 
 public class Node {
-	private int element;
+	private String element;
 	private Node next = null;
 	
-	public Node(int element) {
+	public Node(String element) {
 		this.element = element;
 	}
 	
-	public int getElement() {
+	public String getElement() {
 		return element;
 	}
 	
-	public void setElement(int element) {
+	public void setElement(String element) {
 		this.element = element;
 	}
 	

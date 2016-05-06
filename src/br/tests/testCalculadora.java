@@ -12,23 +12,23 @@ public class testCalculadora {
 	@Before
 	public void inicializa() {
 		calc = new Calculadora();
-		calc.setOperador1(3);
-		calc.setOperador2(9);
+		calc.setOperador1(3.0);
+		calc.setOperador2(9.0);
 	}
 	
 	@Test
 	public void testaSoma() {
-		assertEquals(12, calc.soma());
+		assertEquals(12, calc.soma(), 0.000001);
 	}
 	
 	@Test
 	public void testaSubtracao() {
-		assertEquals(-6, calc.subtracao());
+		assertEquals(-6, calc.subtracao(), 0.000001);
 	}
 	
 	@Test
 	public void testaMultiplicacao() {
-		assertEquals(27, calc.produto());
+		assertEquals(27, calc.produto(), 0.000001);
 	}
 	
 	@Test
@@ -38,6 +38,6 @@ public class testCalculadora {
 	
 	@Test
 	public void testaPotencia() {
-		assertEquals(19683, calc.potencia());
+		assertEquals(19683, calc.potencia(), 0.000001);
 	}
 }

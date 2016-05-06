@@ -12,7 +12,7 @@ public class Pilha {
 		pilha = new ArrayList<Node>();
 	}
 	
-	public void push(int valor) {
+	public void push(String valor) {
 		Node novoElemento = new Node(valor);
 		if(count > 0)
 			novoElemento.setNext(head);
@@ -25,14 +25,14 @@ public class Pilha {
 		return count;
 	}
 
-	public int pop() {
-		int valor = head.getElement();
+	public String pop() {
+		String valor = head.getElement();
 		head = head.getNext();
 		count--;
 		return valor;
 	}
 
-	public int top() {
+	public String top() {
 		return head.getElement();
 	}
 
