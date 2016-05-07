@@ -7,13 +7,15 @@ public class Programa {
 
 	public static void main(String[] args) {
 		Leitor leitor = null;
+		Escritor escritor = null;
 		Pilha pilha = new Pilha();
 		Calculadora calc = new Calculadora();
 		try {
 			leitor = new Leitor("expressoes.txt");
+			escritor = new Escritor("resultados.txt");
 			String linhaAtual = leitor.leProximaLinha();
 			while(linhaAtual != null) {
-				//System.out.println(linhaAtual);
+				escritor.escreveProximaLinha(linhaAtual);
 				
 				String[] termos = linhaAtual.split(" ");
 				for(String proximoTermo : termos) {
@@ -30,7 +32,8 @@ public class Programa {
 					System.out.println(pilha.toString());
 				}
 				
-				
+				escritor.escreveProximaLinha(pilha.pop());
+				escritor.escreveProximaLinha("");
 				linhaAtual = leitor.leProximaLinha();
 				pilha.clear();
 			}
@@ -45,6 +48,7 @@ public class Programa {
 		finally {
 			try {
 				leitor.fechaArquivo();
+				escritor.fechaArquivo();
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
