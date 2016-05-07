@@ -13,7 +13,7 @@ public class Programa {
 			leitor = new Leitor("expressoes.txt");
 			String linhaAtual = leitor.leProximaLinha();
 			while(linhaAtual != null) {
-				System.out.println(linhaAtual);
+				//System.out.println(linhaAtual);
 				
 				String[] termos = linhaAtual.split(" ");
 				for(String proximoTermo : termos) {
@@ -23,10 +23,11 @@ public class Programa {
 						calc.setOperador1(Double.parseDouble(pilha.pop()));
 						//elimina o "abre-parentesis" excedente 
 						pilha.pop();
-						pilha.push(String.format("%f", calc.calcula()));
+						pilha.push(String.format("%f", calc.calcula()).replace(',','.'));
 					}
 					else
 						pilha.push(proximoTermo);
+					System.out.println(pilha.toString());
 				}
 				
 				
@@ -35,11 +36,11 @@ public class Programa {
 			}
 			
 		} catch (FileNotFoundException e) {
-			System.out.println("Arquivo não encontrado.");
+			System.out.println("Arquivo nao encontrado.");
 		} catch (IOException e) {
 			System.out.println("Erro na leitura do arquivo");
 		} catch (Exception e) {
-			System.out.println(e.getMessage());
+			System.out.println(e);
 		}
 		finally {
 			try {

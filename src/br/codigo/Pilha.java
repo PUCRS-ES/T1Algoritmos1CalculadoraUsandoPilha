@@ -49,4 +49,20 @@ public class Pilha {
 		count = 0;
 		head = null;
 	}
+	
+	public String toString() {
+		StringBuilder saida = new StringBuilder();
+		Pilha reverseQueue = new Pilha();
+		
+		Node aux = head;
+		while (aux != null) {
+			reverseQueue.push(aux.getElement());
+			aux = aux.getNext();
+		}
+		
+		while (reverseQueue.count > 0)
+			saida.append(reverseQueue.pop());
+		
+		return saida.toString();
+	}
 }

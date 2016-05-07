@@ -74,7 +74,7 @@ public class testPilha {
 		pilha.clear();
 		int tamanhoDepois = pilha.size();
 		
-		assertNotEquals(tamanhoAntes, tamanhoDepois);
+		//assertNotEquals(tamanhoAntes, tamanhoDepois);
 		assertEquals(1, tamanhoAntes);
 		assertEquals(0, tamanhoDepois);
 	}
