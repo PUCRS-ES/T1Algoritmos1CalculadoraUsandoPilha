@@ -38,7 +38,7 @@ public class Calculadora {
 			case '^':
 				return potencia();
 			default:
-				throw new Exception("Operando inválido");
+				throw new Exception("Operando invalido");
 		}
 	}
 	
