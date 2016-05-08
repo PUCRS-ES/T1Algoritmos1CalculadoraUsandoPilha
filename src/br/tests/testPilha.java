@@ -74,8 +74,32 @@ public class testPilha {
 		pilha.clear();
 		int tamanhoDepois = pilha.size();
 		
-		//assertNotEquals(tamanhoAntes, tamanhoDepois);
+		assertEquals(tamanhoAntes == tamanhoDepois, false);
 		assertEquals(1, tamanhoAntes);
 		assertEquals(0, tamanhoDepois);
+	}
+	
+	@Test
+	public void testaAtualizaTamanhoMaximoAtingido() {
+		assertEquals(0, pilha.atualizaTamanhoMaximoAtingido());
+		
+		pilha.push("99");
+		assertEquals(1, pilha.atualizaTamanhoMaximoAtingido());
+		
+		pilha.pop();
+		assertEquals(1, pilha.atualizaTamanhoMaximoAtingido());
+		
+		pilha.push("88");
+		assertEquals(1, pilha.atualizaTamanhoMaximoAtingido());
+		
+		pilha.push("77");
+		assertEquals(2, pilha.atualizaTamanhoMaximoAtingido());
+		
+		pilha.push("66");
+		assertEquals(3, pilha.atualizaTamanhoMaximoAtingido());
+		
+		pilha.pop();
+		pilha.pop();
+		assertEquals(3, pilha.atualizaTamanhoMaximoAtingido());
 	}
 }

@@ -6,7 +6,7 @@ public class Pilha {
 	private ArrayList<Node> pilha;
 	private Node head;
 	private int count = 0;
-	private static final int TAMANHO_MAXIMO_PILHA = 8;
+	private int tamanhoMaximoAtingido = 0;
 	
 	public Pilha() {
 		pilha = new ArrayList<Node>();
@@ -19,8 +19,20 @@ public class Pilha {
 		pilha.add(novoElemento);
 		head = novoElemento;
 		count++;
+		
+		atualizaTamanhoMaximoAtingido();
 	}
 
+	public int atualizaTamanhoMaximoAtingido() {
+		if(count > tamanhoMaximoAtingido)
+			tamanhoMaximoAtingido = count;
+		return tamanhoMaximoAtingido;
+	}
+	
+	public int getTamanhoMaximoAtingido() {
+		return tamanhoMaximoAtingido;
+	}
+	
 	public int size() {
 		return count;
 	}

@@ -16,7 +16,7 @@ public class Programa {
 			String linhaAtual = leitor.leProximaLinha();
 			while(linhaAtual != null) {
 				boolean erro = false;
-				escritor.escreveProximaLinha(linhaAtual);
+				escritor.escreveProximaLinha("Expressao: " + linhaAtual);
 				
 				String[] termos = linhaAtual.split(" ");
 				for(String proximoTermo : termos) {
@@ -25,7 +25,7 @@ public class Programa {
 							calc.setOperador2(Double.parseDouble(pilha.pop()));
 							calc.setOperando(pilha.pop().charAt(0));
 							calc.setOperador1(Double.parseDouble(pilha.pop()));
-							//elimina o "abre-parentesis" excedente
+							//elimina o "abre parenteses" excedente
 							pilha.pop();
 							pilha.push(String.format("%f", calc.calcula()).replace(',','.'));
 						}
@@ -33,17 +33,18 @@ public class Programa {
 							erro = true;
 							System.out.println(e);
 							escritor.escreveProximaLinha("Erro de sintaxe");
+							escritor.escreveProximaLinha("Tamanho maximo da pilha: " + pilha.getTamanhoMaximoAtingido());
 							escritor.escreveProximaLinha("");
 							break;
 						}
 					}
 					else
 						pilha.push(proximoTermo);
-					//System.out.println(pilha.toString());
 				}
 				
 				if (!erro) {
-					escritor.escreveProximaLinha(pilha.pop());
+					escritor.escreveProximaLinha("Resultado: " + pilha.pop());
+					escritor.escreveProximaLinha("Tamanho maximo da pilha: " + pilha.getTamanhoMaximoAtingido());
 					escritor.escreveProximaLinha("");
 				}
 				linhaAtual = leitor.leProximaLinha();
