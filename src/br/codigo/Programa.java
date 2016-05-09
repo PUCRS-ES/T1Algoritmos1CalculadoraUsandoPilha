@@ -10,6 +10,8 @@ public class Programa {
 		Escritor escritor = null;
 		Pilha pilha = new Pilha();
 		Calculadora calc = new Calculadora();
+		
+		//le expressoes, interpreta e guarda os resultados em um arquivo
 		try {
 			leitor = new Leitor("expressoes.txt");
 			escritor = new Escritor("resultados.txt");
@@ -31,7 +33,6 @@ public class Programa {
 						}
 						catch (Exception e) {
 							erro = true;
-							System.out.println(e);
 							escritor.escreveProximaLinha("Erro de sintaxe");
 							escritor.escreveProximaLinha("Tamanho maximo da pilha: " + pilha.getTamanhoMaximoAtingido());
 							escritor.escreveProximaLinha("");
@@ -50,11 +51,11 @@ public class Programa {
 				linhaAtual = leitor.leProximaLinha();
 				pilha.clear();
 			}
-			
 		} 
 		catch (FileNotFoundException e) {
 			System.out.println("Arquivo nao encontrado.");
-		} catch (IOException e) {
+		}
+		catch (IOException e) {
 			System.out.println("Erro na leitura do arquivo");
 		}
 		finally {
@@ -65,6 +66,27 @@ public class Programa {
 				e.printStackTrace();
 			}
 		}
+		
+		//Imprime no console os resultados obtidos
+		try {
+			leitor = new Leitor("resultados.txt");
+			String linhaAtual = leitor.leProximaLinha();
+			while(linhaAtual != null) {
+				System.out.println(linhaAtual);
+				linhaAtual = leitor.leProximaLinha();	
+			}
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		finally {
+			try {
+				leitor.fechaArquivo();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
+		
 	}
-
 }
