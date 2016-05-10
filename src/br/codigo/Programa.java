@@ -10,6 +10,7 @@ public class Programa {
 		Escritor escritor = null;
 		Pilha pilha = new Pilha();
 		Calculadora calc = new Calculadora();
+		Pilha pilhaAux = new Pilha();
 		
 		//le expressoes, interpreta e guarda os resultados em um arquivo
 		try {
@@ -24,12 +25,20 @@ public class Programa {
 				for(String proximoTermo : termos) {
 					if(proximoTermo.equals(")")) {
 						try {
-							calc.setOperador2(Double.parseDouble(pilha.pop()));
-							calc.setOperando(pilha.pop().charAt(0));
-							calc.setOperador1(Double.parseDouble(pilha.pop()));
+							while(!pilha.top().equals("("))
+								pilhaAux.push(pilha.pop());
 							//elimina o "abre parenteses" excedente
 							pilha.pop();
-							pilha.push(String.format("%f", calc.calcula()).replace(',','.'));
+						
+							while(pilhaAux.size() > 2) {
+								calc.setOperador1(Double.parseDouble(pilhaAux.pop()));
+								calc.setOperando(pilhaAux.pop().charAt(0));
+								calc.setOperador2(Double.parseDouble(pilhaAux.pop()));
+								
+								pilhaAux.push(String.format("%f", calc.calcula()).replace(',','.'));
+							}
+						
+							pilha.push(pilhaAux.pop());
 						}
 						catch (Exception e) {
 							erro = true;
@@ -38,6 +47,7 @@ public class Programa {
 							escritor.escreveProximaLinha("");
 							break;
 						}
+						
 					}
 					else
 						pilha.push(proximoTermo);
