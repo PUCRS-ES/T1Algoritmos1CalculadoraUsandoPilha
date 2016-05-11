@@ -8,7 +8,6 @@ public class Programa {
 	public static void main(String[] args) {
 		Leitor leitor = null;
 		Escritor escritor = null;
-		Pilha pilha = new Pilha();
 		Calculadora calc = new Calculadora();
 		
 		//le expressoes, interpreta e guarda os resultados em um arquivo
@@ -17,9 +16,9 @@ public class Programa {
 			escritor = new Escritor("resultados.txt");
 			String linhaAtual = leitor.leProximaLinha();
 			while(linhaAtual != null) {
+				Pilha pilha = new Pilha();
 				boolean erro = false;
 				escritor.escreveProximaLinha("Expressao: " + linhaAtual);
-				
 				String[] termos = linhaAtual.split(" ");
 				for(String proximoTermo : termos) {
 					if(proximoTermo.equals(")")) {
